@@ -135,6 +135,15 @@ const API_SITES = {
         name: '番号资源',
         adult: true
     },
+    msnzy: {
+        api: 'https://www.msnii.com/api/xml.php',
+        name: '美少女资源',
+        adult: true
+    },
+    ckzy1: {
+        api: 'http://www.feifei67.com/api.php/provide/vod/',
+        name: 'CK01资源',
+        adult: true    
     ckzy: {
         api: 'https://www.ckzy1.com',
         name: 'CK资源',
