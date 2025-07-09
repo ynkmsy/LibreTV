@@ -143,7 +143,8 @@ const API_SITES = {
     ckzy1: {
         api: 'http://www.feifei67.com/api.php/provide/vod/',
         name: 'CK01资源',
-        adult: true    
+        adult: true 
+    },        
     ckzy: {
         api: 'https://www.ckzy1.com',
         name: 'CK资源',
