@@ -1,41 +1,4 @@
-// ===== 全局修复豆瓣图片 =====
-(function () {
-    const originalSetAttribute = Element.prototype.setAttribute;
 
-    function fixImg(url) {
-        if (!url) return url;
-
-        // 只处理豆瓣图片
-        if (url.includes('doubanio.com') || url.includes('douban.com')) {
-            return 'https://images.weserv.nl/?url=' + url.replace(/^https?:\/\//, '');
-        }
-
-        return url;
-    }
-
-    // 拦截 setAttribute
-    Element.prototype.setAttribute = function (name, value) {
-        if (name === 'src' && typeof value === 'string') {
-            value = fixImg(value);
-        }
-        return originalSetAttribute.call(this, name, value);
-    };
-
-    // 拦截 img.src =
-    const originalSrc = Object.getOwnPropertyDescriptor(HTMLImageElement.prototype, 'src');
-
-    Object.defineProperty(HTMLImageElement.prototype, 'src', {
-        set(value) {
-            if (typeof value === 'string') {
-                value = fixImg(value);
-            }
-            originalSrc.set.call(this, value);
-        },
-        get() {
-            return originalSrc.get.call(this);
-        }
-    });
-})();
 
 // 全局变量
 let selectedAPIs = JSON.parse(localStorage.getItem('selectedAPIs') || '["tyyszy","dyttzy", "bfzy", "ruyi"]'); // 默认选中资源
